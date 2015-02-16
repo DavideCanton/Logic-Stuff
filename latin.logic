@@ -1,0 +1,7 @@
+#const size = 3.
+num(1..size).
+
+1 { pos(I,J,V) : num(V) } 1 :- num(I;J).
+
+:- num(I;V), 2 { pos(I, _, V) }.
+:- num(J;V), 2 { pos(_, J, V) }.

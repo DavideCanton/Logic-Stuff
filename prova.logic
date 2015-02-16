@@ -1,0 +1,6 @@
+num(1..100).
+
+odd(N) :- num(N), N #mod 2 == 1.
+is_odd_square(N) :- odd(N), num(X), N == X * X.
+#hide.
+#show is_odd_square/1.

@@ -1,0 +1,3 @@
+divisor(N,D) :- #int(N), #int(D), D < N, #mod(N,D,0).
+
+perfect(N) :- #int(N), N > 0, #sum{D : divisor(N,D)} = N.

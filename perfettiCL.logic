@@ -1,0 +1,11 @@
+#const m = 100000.
+num(1..m).
+
+divisor(N, 1) :- num(N).
+divisor(N, D) :- num(N), num(D), D < N, N \ D == 0.
+
+-perfect(N) :- num(N), { divisor(N, D) } 2.
+perfect(N) :- num(N), N > 1, N [divisor(N, D) = D] N.
+
+#hide.
+#show perfect/1.

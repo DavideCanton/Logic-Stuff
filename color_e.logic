@@ -1,0 +1,13 @@
+color(r). color(g). color(b). color(y).
+
+% regole DLV 
+%color_node(N, C) :- node(N), color(C), not altro_colore(N, C). 
+%altro_colore(N, C) :- color(C), color(C1), C != C1, color_node(N, C1).
+
+% regola clasp 
+1 { color_node(N, C) : color(C) } 1 :- node(N).
+
+:- edge(A, B), color_node(A, C), color_node(B, C).
+
+#hide.
+#show color_node/2.

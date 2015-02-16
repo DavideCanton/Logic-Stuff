@@ -1,0 +1,18 @@
+cell_index(0..8).
+cell_value(1..9).
+ 
+initial_pos(I, J) :- initial_pos(I, J, _).
+empty(I, J) :- cell_index(I), cell_index(J), not initial_pos(I, J).
+ 
+sudoku_value(I, J, V) :- initial_pos(I, J, V).
+1 { sudoku_value(I, J, V) : cell_value(V) } 1 :- empty(I, J).
+sq_index(I, N) :- cell_index(I), M = I / 3, N = M * 3.
+same_sq(I, I1) :- cell_index(I), cell_index(I1), sq_index(I, IS), sq_index(I1, IS).
+ 
+:- cell_index(I), sudoku_value(I, J, V), sudoku_value(I, J1, V), J != J1.
+:- cell_index(J), sudoku_value(I, J, V), sudoku_value(I1, J, V), I != I1.
+:- same_sq(I, I1), same_sq(J, J1), I != I1, sudoku_value(I, J, V), sudoku_value(I1, J1, V).
+:- same_sq(I, I1), same_sq(J, J1), J != J1, sudoku_value(I, J, V), sudoku_value(I1, J1, V).
+ 
+%#hide.
+%#show sudoku_value/3.

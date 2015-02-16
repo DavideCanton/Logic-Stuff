@@ -1,0 +1,6 @@
+p(michele).
+
+m(X) | f(X) :- p(X).
+
+h(X) :- m(X), f(X).
+

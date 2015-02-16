@@ -1,0 +1,12 @@
+block(b0;b1;b2).
+
+init(on(b1,table)).
+init(on(b2,b0)).
+init(on(b0,table)).
+
+goal(on(b0,b1)).
+goal(on(b1,b2)).
+goal(on(b2,table)).
+
+
+

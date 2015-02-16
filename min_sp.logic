@@ -1,0 +1,14 @@
+0 { in_tree(X, Y) } 1 :- edge_u(X, Y).
+in_tree(X, Y) :- in_tree(Y, X).
+
+path(X, X) :- node(X).
+path(X, Y) :- in_tree(X, Y).
+path(X, Y) :- in_tree(X, Z), path(Z, Y).
+
+#minimize [ in_tree(X, Y) : cost(X,Y,C) = C ].
+
+:- node(X), node(Y), not path(X, Y).
+:- nc(N), N1 := 2*N-1, N1 { in_tree(X, Y) }.
+
+#hide.
+#show in_tree/2.

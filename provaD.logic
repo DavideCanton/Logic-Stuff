@@ -1,0 +1,6 @@
+#maxint = 10.
+
+n(0..3).
+
+a(X) | -a(X) :- n(X).
+l(N) :- #int(N), N = #count { X : a(X) }.

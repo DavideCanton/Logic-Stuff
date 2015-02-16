@@ -1,0 +1,9 @@
+divisor(N,D) :- #int(N), #int(D), D < N, #mod(N, D, 0).
+
+prime(N) :- #int(N), N > 1, not other_div(N).
+other_div(N) :- divisor(N, D), D != 1, D != N.
+
+gemini_primes(N,M) :- prime(N), prime(M), 2 = M - N.
+gt_gemini_primes(N,M) :- gemini_primes(N,M), not greater(N).
+greater(N) :- prime(N), gemini_primes(A,_), A > N.
+

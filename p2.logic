@@ -1,0 +1,7 @@
+p(0..#maxint).
+min_n(N) :- N = #min { X : p(X) }.
+max_n(N) :- N = #max { X : p(X) }.
+
+gt10(N) :- p(N), N > 10.
+
+gt10(X) ?
